@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="SwfOnCpp" package="com.sample.swfOnCpp" version="1.0.0" company="saumya Ltd." />
+	<app main="Main" path="Export" file="SwfOnCpp" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+
+	<haxelib name="swf" />
+	<library path="Assets/OpenFlOne.swf" type="swflite" preload="true" generate="true" />
+	
+	<assets path="Assets" rename="assets" exclude="openfl.svg|*.swf" />
+	
+</project>
