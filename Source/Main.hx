@@ -50,6 +50,7 @@ class Main extends Sprite {
 
 	private function onStageResize(e:Event):Void{
 		trace('onStageResize',this.stage.stageWidth,this.stage.stageHeight);
+		
 		this.centerTheGameOnStage();
 		this.gameView.onStageResize();
 	}
