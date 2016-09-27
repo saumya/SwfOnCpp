@@ -23,7 +23,13 @@ class Main extends Sprite {
 
 		this.stage.addEventListener(Event.RESIZE,onStageResize);
 
-		this.gameView = new GameEntryView(this,400,500);	
+		// Conditional compilation
+		#if ios
+			this.gameView = new GameEntryView(this,1242,2208); // 1242,2208
+		#else
+			this.gameView = new GameEntryView(this,400,500);
+		#end
+
 		this.addChild(this.gameView);
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
@@ -50,7 +56,7 @@ class Main extends Sprite {
 
 	private function onStageResize(e:Event):Void{
 		trace('onStageResize',this.stage.stageWidth,this.stage.stageHeight);
-		
+
 		this.centerTheGameOnStage();
 		this.gameView.onStageResize();
 	}
