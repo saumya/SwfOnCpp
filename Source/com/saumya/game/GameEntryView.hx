@@ -14,8 +14,11 @@ class GameEntryView extends Sprite {
 	private var animRect:AnimRect;
 	private var isAnimating:Bool;
 
-	public function new() {
+	private var mainRef:Main;
+
+	public function new(mainObj:Main) {
 		super();
+		this.mainRef = mainObj;
 		this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
 	}
 	private function onAddedToStage(e:Event):Void{
@@ -34,6 +37,7 @@ class GameEntryView extends Sprite {
 	}
 	public function render():Void{
 		trace('render');
+
 		// draw background
 		var bg:Graphics = this.graphics;
 		bg.clear();
@@ -69,12 +73,15 @@ class GameEntryView extends Sprite {
 		this.addChild(btn);
 		this.addChild(this.animRect);
 
+		/*
 		// Fix this ! The Event is not getting dispatched
 		var ge:Event = new Event(GameEntryView.UI_READY,true);
 		this.dispatchEvent(ge);
+		*/
 		
 		//
-		this.centerTheGameOnStage();
+		//this.centerTheGameOnStage();
+		this.mainRef.onGameUiReady();
 	}
 
 	private function onBtnClick(e:MouseEvent):Void{
@@ -90,6 +97,8 @@ class GameEntryView extends Sprite {
 	}
 
 	private function centerTheGameOnStage():Void{
+		trace('centerTheGameOnStage');
+
 		this.x = (this.stage.stageWidth - this.width)/2 ;
 		this.y = (this.stage.stageHeight - this.height)/2;
 	}

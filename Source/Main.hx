@@ -20,21 +20,28 @@ class Main extends Sprite {
 	}
 	private function onAddedToStage(e:Event):Void{
 		trace('onAddedToStage');
-		this.gameView = new GameEntryView();	
+
+		this.gameView = new GameEntryView(this);	
 		this.addChild(this.gameView);
 
-		this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
+		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
 	}
+	/*
+	// Does not work ?!
 	private function onGameUiReady(e:Event):Void{
 		trace('onGameUiReady');
-
-		//this.centerTheGameOnStage();
+		this.centerTheGameOnStage();
+	}
+	*/
+	// Called from the Game object as a callback
+	public function onGameUiReady():Void{
+		this.centerTheGameOnStage();
 	}
 	private function centerTheGameOnStage():Void{
-		trace(this.gameView.width,this.gameView.height);
+		trace('centerTheGameOnStage:',this.gameView.width,this.gameView.height);
 
 		this.gameView.x = (this.stage.stageWidth - this.gameView.width)/2 ;
-		this.gameView.y = (this.stage.stageHeight - this.gameView.height)/2 - 100;
+		this.gameView.y = (this.stage.stageHeight - this.gameView.height)/2;
 	}
 	
 }
