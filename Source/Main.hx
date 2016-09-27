@@ -24,6 +24,7 @@ class Main extends Sprite {
 		this.stage.addEventListener(Event.RESIZE,onStageResize);
 
 		// Conditional compilation
+		// ref: https://haxe.org/manual/lf-condition-compilation.html
 		#if ios
 			this.gameView = new GameEntryView(this,1242,2208); // 1242,2208
 		#else
