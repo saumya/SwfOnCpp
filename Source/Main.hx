@@ -21,7 +21,9 @@ class Main extends Sprite {
 	private function onAddedToStage(e:Event):Void{
 		trace('onAddedToStage');
 
-		this.gameView = new GameEntryView(this);	
+		this.stage.addEventListener(Event.RESIZE,onStageResize);
+
+		this.gameView = new GameEntryView(this,400,500);	
 		this.addChild(this.gameView);
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
@@ -35,6 +37,8 @@ class Main extends Sprite {
 	*/
 	// Called from the Game object as a callback
 	public function onGameUiReady():Void{
+		trace('onGameUiReady');
+
 		this.centerTheGameOnStage();
 	}
 	private function centerTheGameOnStage():Void{
@@ -42,6 +46,12 @@ class Main extends Sprite {
 
 		this.gameView.x = (this.stage.stageWidth - this.gameView.width)/2 ;
 		this.gameView.y = (this.stage.stageHeight - this.gameView.height)/2;
+	}
+
+	private function onStageResize(e:Event):Void{
+		trace('onStageResize',this.stage.stageWidth,this.stage.stageHeight);
+		this.centerTheGameOnStage();
+		this.gameView.onStageResize();
 	}
 	
 }

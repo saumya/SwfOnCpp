@@ -15,10 +15,16 @@ class GameEntryView extends Sprite {
 	private var isAnimating:Bool;
 
 	private var mainRef:Main;
+	private var fWidth:Float;
+	private var fHeight:Float;
 
-	public function new(mainObj:Main) {
+	public function new(mainObj:Main,gameWidth:Float,gameHeight:Float) {
 		super();
+		
 		this.mainRef = mainObj;
+		this.fWidth = gameWidth;
+		this.fHeight = gameHeight;
+
 		this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
 	}
 	private function onAddedToStage(e:Event):Void{
@@ -42,7 +48,7 @@ class GameEntryView extends Sprite {
 		var bg:Graphics = this.graphics;
 		bg.clear();
 		bg.beginFill(0xCCCCCC,1.0);
-		bg.drawRect(0,0,400,500);
+		bg.drawRect(0,0,this.fWidth,this.fHeight);
 		bg.endFill();
 
 		// Use SWF asset library
@@ -78,7 +84,7 @@ class GameEntryView extends Sprite {
 		var ge:Event = new Event(GameEntryView.UI_READY,true);
 		this.dispatchEvent(ge);
 		*/
-		
+
 		//
 		//this.centerTheGameOnStage();
 		this.mainRef.onGameUiReady();
@@ -101,5 +107,10 @@ class GameEntryView extends Sprite {
 
 		this.x = (this.stage.stageWidth - this.width)/2 ;
 		this.y = (this.stage.stageHeight - this.height)/2;
+	}
+
+	public function onStageResize():Void{
+		trace('onStageResize');
+
 	}
 }
