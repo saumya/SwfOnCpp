@@ -101,14 +101,15 @@ class GameEntryView extends Sprite {
 			this.isAnimating = true;
 		}
 	}
-
+	/*
+	// Anyway not working for the events
 	private function centerTheGameOnStage():Void{
 		trace('centerTheGameOnStage');
 
 		this.x = (this.stage.stageWidth - this.width)/2 ;
 		this.y = (this.stage.stageHeight - this.height)/2;
 	}
-
+	*/
 	public function onStageResize():Void{
 		trace('onStageResize');
 
