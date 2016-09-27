@@ -30,7 +30,6 @@ class GameEntryView extends Sprite {
 	public function init():Void{
 		trace('init');
 
-		//this.drawFromSwf();
 		this.render();
 	}
 	public function render():Void{
@@ -41,6 +40,7 @@ class GameEntryView extends Sprite {
 		bg.beginFill(0xCCCCCC,1.0);
 		bg.drawRect(0,0,400,500);
 		bg.endFill();
+
 		// Use SWF asset library
 		this.drawFromSwf();
 	}
@@ -68,9 +68,12 @@ class GameEntryView extends Sprite {
 		// Add the UI
 		this.addChild(btn);
 		this.addChild(this.animRect);
-		//
+
+		// Fix this ! The Event is not getting dispatched
 		var ge:Event = new Event(GameEntryView.UI_READY,true);
 		this.dispatchEvent(ge);
+		
+		//
 		this.centerTheGameOnStage();
 	}
 

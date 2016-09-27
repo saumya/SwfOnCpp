@@ -28,7 +28,7 @@ class Main extends Sprite {
 	private function onGameUiReady(e:Event):Void{
 		trace('onGameUiReady');
 
-		this.centerTheGameOnStage();
+		//this.centerTheGameOnStage();
 	}
 	private function centerTheGameOnStage():Void{
 		trace(this.gameView.width,this.gameView.height);
