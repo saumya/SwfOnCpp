@@ -1,6 +1,7 @@
 package com.saumya.game;
 
 import openfl.display.Sprite;
+import openfl.display.Graphics;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 
@@ -29,11 +30,18 @@ class GameEntryView extends Sprite {
 	public function init():Void{
 		trace('init');
 
-		this.drawFromSwf();
+		//this.drawFromSwf();
+		this.render();
 	}
 	public function render():Void{
 		trace('render');
-
+		// draw background
+		var bg:Graphics = this.graphics;
+		bg.clear();
+		bg.beginFill(0xCCCCCC,1.0);
+		bg.drawRect(0,0,400,500);
+		bg.endFill();
+		// Use SWF asset library
 		this.drawFromSwf();
 	}
 
