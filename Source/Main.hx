@@ -19,7 +19,7 @@ class Main extends Sprite {
 		this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
 	}
 	private function onAddedToStage(e:Event):Void{
-		trace('onAddedToStage');
+		trace('onAddedToStage',this.stage.stageWidth,this.stage.stageHeight);
 
 		this.stage.addEventListener(Event.RESIZE,onStageResize);
 
