@@ -23,6 +23,10 @@ class Main extends Sprite {
 
 		this.stage.addEventListener(Event.RESIZE,onStageResize);
 
+		// If you want the game to take up the whole screen
+		// or
+		// make the game UI customised in such a way that it looks good in all screens
+
 		// Conditional compilation
 		// ref: haxe 	: https://haxe.org/manual/lf-condition-compilation.html
 		// ref: Openfl 	: http://www.openfl.org/learn/docs/command-line-tools/basic-commands/
