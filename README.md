@@ -5,5 +5,6 @@ An experiment to run SWF assets produced from FlashIDE on CPP.
  - Android
  - MAC
 
-Works on OpenFL but not NME !
-`Most probably because of SWF library`
+Works on OpenFL but not NME !          
+
+ `Most probably because of SWF library`
