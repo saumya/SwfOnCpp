@@ -8,7 +8,8 @@
 	
 	<haxelib name="openfl" />
 
-	<haxelib name="swf" />
+	
+	<!-- <haxelib name="swf" /> --> <!-- As the SWF lib is part of OpenFL now -->
 	<library path="Assets/OpenFlOne.swf" type="swflite" preload="true" generate="true" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg|*.swf" />
