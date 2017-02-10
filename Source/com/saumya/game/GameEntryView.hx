@@ -47,7 +47,7 @@ class GameEntryView extends Sprite {
 		// draw background
 		var bg:Graphics = this.graphics;
 		bg.clear();
-		bg.beginFill(0xCCCCCC,1.0);
+		bg.beginFill(0x440000,1.0);
 		bg.drawRect(0,0,this.fWidth,this.fHeight);
 		bg.endFill();
 
@@ -57,7 +57,7 @@ class GameEntryView extends Sprite {
 
 	private function drawFromSwf():Void{
 		trace('drawFromSwf');
-
+		/*
 		var btn = new BlueRect ();
 		btn.x = 10;
 		btn.y = 10;
@@ -78,12 +78,22 @@ class GameEntryView extends Sprite {
 		// Add the UI
 		this.addChild(btn);
 		this.addChild(this.animRect);
+		*/
 
 		/*
 		// Fix this ! The Event is not getting dispatched
 		var ge:Event = new Event(GameEntryView.UI_READY,true);
 		this.dispatchEvent(ge);
 		*/
+
+		//Assets for second SWF
+		var numItems:Int = 10;
+		for (i in 0 ... numItems) {
+			var a = new Input1Type();
+			this.addChild(a);
+			a.x = 10;
+			a.y = 50*i;
+		}
 
 		//
 		//this.centerTheGameOnStage();
@@ -112,6 +122,13 @@ class GameEntryView extends Sprite {
 	*/
 	public function onStageResize():Void{
 		trace('onStageResize');
+
+		//this.width = this.stage.stageWidth  ;
+		//this.height = this.stage.stageHeight ;
+		this.fWidth = this.stage.stageWidth;
+		this.fHeight = this.stage.stageHeight;
+
+		this.render();
 
 	}
 }

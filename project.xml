@@ -11,6 +11,7 @@
 	
 	<!-- <haxelib name="swf" /> --> <!-- As the SWF lib is part of OpenFL now -->
 	<library path="Assets/OpenFlOne.swf" type="swflite" preload="true" generate="true" />
+	<library path="Assets/Calc_Asset.swf" type="swflite" preload="true" generate="true" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg|*.swf" />
 	
