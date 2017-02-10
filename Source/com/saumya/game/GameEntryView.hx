@@ -57,7 +57,7 @@ class GameEntryView extends Sprite {
 
 	private function drawFromSwf():Void{
 		trace('drawFromSwf');
-		/*
+		
 		var btn = new BlueRect ();
 		btn.x = 10;
 		btn.y = 10;
@@ -78,7 +78,7 @@ class GameEntryView extends Sprite {
 		// Add the UI
 		this.addChild(btn);
 		this.addChild(this.animRect);
-		*/
+		
 
 		/*
 		// Fix this ! The Event is not getting dispatched
@@ -92,7 +92,7 @@ class GameEntryView extends Sprite {
 			var a = new Input1Type();
 			this.addChild(a);
 			a.x = 10;
-			a.y = 50*i;
+			a.y = 240+50*i;
 		}
 
 		//

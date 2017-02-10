@@ -27,6 +27,8 @@ class Main extends Sprite {
 		// or
 		// option 2: LEt game UI be customised in such a way that it looks good in all screens
 
+		/*
+
 		// Conditional compilation
 		// ref: haxe 	: https://haxe.org/manual/lf-condition-compilation.html
 		// ref: Openfl 	: http://www.openfl.org/learn/docs/command-line-tools/basic-commands/
@@ -35,8 +37,9 @@ class Main extends Sprite {
 		#else
 			this.gameView = new GameEntryView(this,400,500);
 		#end
+		*/
 
-		this.addChild(this.gameView);
+		
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
 	}
@@ -51,7 +54,7 @@ class Main extends Sprite {
 	public function onGameUiReady():Void{
 		trace('onGameUiReady');
 
-		this.centerTheGameOnStage();
+		//this.centerTheGameOnStage();
 	}
 	private function centerTheGameOnStage():Void{
 		trace('centerTheGameOnStage:',this.gameView.width,this.gameView.height);
@@ -63,8 +66,11 @@ class Main extends Sprite {
 	private function onStageResize(e:Event):Void{
 		trace('onStageResize',this.stage.stageWidth,this.stage.stageHeight);
 
+		this.gameView = new GameEntryView(this,this.stage.stageWidth,this.stage.stageHeight);
+		this.addChild(this.gameView);
+
 		//this.centerTheGameOnStage();
-		this.gameView.onStageResize();
+		//this.gameView.onStageResize();
 	}
 	
 }
