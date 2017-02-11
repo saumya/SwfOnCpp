@@ -152,6 +152,7 @@ class GameEntryView extends Sprite {
 		trace('this.resultField.text',s);
 
 		so.setProperty("appName",s);
+		so.flush(100);
 	}
 
 	private function onUserClick(e:MouseEvent):Void{
