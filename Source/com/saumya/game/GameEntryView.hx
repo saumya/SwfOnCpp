@@ -13,6 +13,11 @@ import openfl.display.Graphics;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
 
+import openfl.text.TextField;
+
+import openfl.net.SharedObject;
+//import flash.net.SharedObject;
+
 
 
 class GameEntryView extends Sprite {
@@ -25,6 +30,8 @@ class GameEntryView extends Sprite {
 	private var mainRef:Main;
 	private var fWidth:Float;
 	private var fHeight:Float;
+
+	private var resultField:TextField;
 
 	public function new(mainObj:Main,gameWidth:Float,gameHeight:Float) {
 		super();
@@ -105,12 +112,46 @@ class GameEntryView extends Sprite {
 			a.x = 10;
 			a.y = 240+50*i;
 
+			if (i==0) {
+				this.resultField = a.uInput;
+			}
+
 			a.addEventListener(MouseEvent.CLICK,onUserClick);
 		}
 
 		//
 		//this.centerTheGameOnStage();
 		//this.mainRef.onGameUiReady();
+
+		var b1:Btn_FormView = new Btn_FormView();
+		this.addChild(b1);
+		b1.x = 10;
+		b1.y = 240+50*10+20;
+		b1.addEventListener(MouseEvent.CLICK,onB1Click);
+		//
+		var b2:Btn_ResultView = new Btn_ResultView();
+		this.addChild(b2);
+		b2.x = b1.x + b1.width + 50;
+		b2.y = b1.y;
+		b2.addEventListener(MouseEvent.CLICK,onB2Click);
+	}
+
+	private function onB2Click(e:MouseEvent):Void{
+		trace('onB2Click');
+		var so:SharedObject = SharedObject.getLocal("savedData");
+		trace('so.data',so.data);
+		trace('so.data.appName',so.data.appName);
+		this.resultField.text = so.data.appName;
+	}
+
+	private function onB1Click(e:MouseEvent):Void{
+		trace('onB1Click');
+		var so:SharedObject = SharedObject.getLocal("savedData");
+		//trace('so.data',so.data);
+		var s:String = this.resultField.text;
+		trace('this.resultField.text',s);
+
+		so.setProperty("appName",s);
 	}
 
 	private function onUserClick(e:MouseEvent):Void{
