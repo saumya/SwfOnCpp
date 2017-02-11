@@ -39,6 +39,8 @@ class Main extends Sprite {
 		#end
 		*/
 
+		// Android : ASUS : 720 x 1280
+
 		
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
