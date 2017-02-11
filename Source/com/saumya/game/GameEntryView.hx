@@ -1,3 +1,11 @@
+/**
+ *
+ *	Experiementing with the Flash API
+ * 
+ *	flash.net.SharedObject : http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/net/SharedObject.html
+ *
+ **/
+
 package com.saumya.game;
 
 import openfl.display.Sprite;
@@ -25,8 +33,10 @@ class GameEntryView extends Sprite {
 		this.fWidth = gameWidth;
 		this.fHeight = gameHeight;
 
-		this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
+		//this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
+		this.render();
 	}
+	/*
 	private function onAddedToStage(e:Event):Void{
 		this.preInit();
 	}
@@ -41,8 +51,9 @@ class GameEntryView extends Sprite {
 
 		this.render();
 	}
+	*/
 	public function render():Void{
-		trace('render');
+		trace('GameEntryView : render');
 
 		// draw background
 		var bg:Graphics = this.graphics;
@@ -56,7 +67,7 @@ class GameEntryView extends Sprite {
 	}
 
 	private function drawFromSwf():Void{
-		trace('drawFromSwf');
+		trace('GameEntryView : drawFromSwf');
 		
 		var btn = new BlueRect ();
 		btn.x = 10;
@@ -93,11 +104,17 @@ class GameEntryView extends Sprite {
 			this.addChild(a);
 			a.x = 10;
 			a.y = 240+50*i;
+
+			a.addEventListener(MouseEvent.CLICK,onUserClick);
 		}
 
 		//
 		//this.centerTheGameOnStage();
-		this.mainRef.onGameUiReady();
+		//this.mainRef.onGameUiReady();
+	}
+
+	private function onUserClick(e:MouseEvent):Void{
+		trace(e.target);
 	}
 
 	private function onBtnClick(e:MouseEvent):Void{

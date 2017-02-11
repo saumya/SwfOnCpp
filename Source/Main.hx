@@ -21,7 +21,7 @@ class Main extends Sprite {
 	private function onAddedToStage(e:Event):Void{
 		trace('onAddedToStage',this.stage.stageWidth,this.stage.stageHeight);
 
-		this.stage.addEventListener(Event.RESIZE,onStageResize);
+		//this.stage.addEventListener(Event.RESIZE,onStageResize);
 
 		// option 1: Let game take up the whole screen
 		// or
@@ -44,6 +44,9 @@ class Main extends Sprite {
 		
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
+
+		this.gameView = new GameEntryView(this,this.stage.stageWidth,this.stage.stageHeight);
+		this.addChild(this.gameView);
 	}
 	/*
 	// Does not work ?!
@@ -52,12 +55,15 @@ class Main extends Sprite {
 		this.centerTheGameOnStage();
 	}
 	*/
+	/*
 	// Called from the Game object as a callback
 	public function onGameUiReady():Void{
 		trace('onGameUiReady');
 
 		//this.centerTheGameOnStage();
 	}
+	*/
+	/*
 	private function centerTheGameOnStage():Void{
 		trace('centerTheGameOnStage:',this.gameView.width,this.gameView.height);
 
@@ -74,5 +80,6 @@ class Main extends Sprite {
 		//this.centerTheGameOnStage();
 		//this.gameView.onStageResize();
 	}
+	*/
 	
 }
