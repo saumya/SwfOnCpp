@@ -114,7 +114,29 @@ class GameEntryView extends Sprite {
 	}
 
 	private function onUserClick(e:MouseEvent):Void{
-		trace(e.target);
+		// trace(e.target);
+		// trace(e.currentTarget);
+
+		// Ref: http://stackoverflow.com/questions/1904778/placing-cursor-blinking-caret-into-input-textfield-for-user-input-in-as3
+
+		var it1:Input1Type = cast(e.currentTarget);
+		//it1.uInput.text = "Hello";
+
+		this.stage.focus = it1.uInput;
+		
+		if(it1.uInput.text == ""){
+			it1.uInput.text = "type";
+			//it1.uInput.text = "";
+			it1.uInput.setSelection(0,it1.uInput.text.length);
+		}
+		
+		//Selection.setFocus(it1.uInput);
+		//it1.tabEnabled = false;
+
+		//it1.uInput.setSelection(it1.uInput.text.length,it1.uInput.text.length);
+		//it1.uInput.setSelection(0,it1.uInput.text.length);
+		//it1.uInput.caretIndex = 0;
+
 	}
 
 	private function onBtnClick(e:MouseEvent):Void{
