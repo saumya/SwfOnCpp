@@ -10,6 +10,10 @@ Works on OpenFL but not NME !
 
  `Most probably because of SWF library`
 
+#### Findings
+ - SWF assets are rendering properly on Android and CPP targets
+ - The `SharedObject` is working fine on Android ( This is for storing data locally )
+
 #### Notes
 
  If running an old project, which used to have SWF assets and updating to latest version of Lime and OpenFL, then follow these.
