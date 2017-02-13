@@ -13,6 +13,7 @@ Works on OpenFL but not NME !
 #### Findings
  - SWF assets are rendering properly on Android and CPP targets
  - The `SharedObject` is working fine on Android ( This is for storing data locally )
+ - NOt sure why this drains the battery life !
 
 #### Notes
 
