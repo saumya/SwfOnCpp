@@ -16,7 +16,10 @@ import openfl.events.MouseEvent;
 import openfl.text.TextField;
 
 import openfl.net.SharedObject;
-//import flash.net.SharedObject;
+
+import ru.stablex.ui.UIBuilder;
+import ru.stablex.ui.widgets.Scroll;
+import ru.stablex.ui.widgets.VBox;
 
 
 
@@ -33,12 +36,18 @@ class GameEntryView extends Sprite {
 
 	private var resultField:TextField;
 
+	private var scrollView:Scroll;
+
+
+
 	public function new(mainObj:Main,gameWidth:Float,gameHeight:Float) {
 		super();
 		
 		this.mainRef = mainObj;
 		this.fWidth = gameWidth;
 		this.fHeight = gameHeight;
+
+		UIBuilder.init();
 
 		//this.addEventListener(Event.ADDED_TO_STAGE,onAddedToStage);
 		this.render();
@@ -69,12 +78,18 @@ class GameEntryView extends Sprite {
 		bg.drawRect(0,0,this.fWidth,this.fHeight);
 		bg.endFill();
 
+		//StablexUI
+		this.scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
+		this.addChild( scrollView );
+
 		// Use SWF asset library
 		this.drawFromSwf();
 	}
 
 	private function drawFromSwf():Void{
 		trace('GameEntryView : drawFromSwf');
+
+		var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
 		
 		var btn = new BlueRect ();
 		btn.x = 10;
@@ -108,9 +123,10 @@ class GameEntryView extends Sprite {
 		var numItems:Int = 4;
 		for (i in 0 ... numItems) {
 			var a = new Input1Type();
-			this.addChild(a);
+			vBox.addChild(a);
 			a.x = 10;
-			a.y = 240+50*i;
+			//a.y = 240+50*i;
+			a.y = 10+50*i;
 
 			if (i==0) {
 				this.resultField = a.uInput;
@@ -124,14 +140,14 @@ class GameEntryView extends Sprite {
 		//this.mainRef.onGameUiReady();
 
 		var b1:Btn_FormView = new Btn_FormView();
-		this.addChild(b1);
+		vBox.addChild(b1);
 		b1.x = 10;
 		//b1.y = 240+50*10+20;
-		b1.y = 240+50*numItems+20;
+		b1.y = 10+50*numItems+20;
 		b1.addEventListener(MouseEvent.CLICK,onB1Click);
 		//
 		var b2:Btn_ResultView = new Btn_ResultView();
-		this.addChild(b2);
+		vBox.addChild(b2);
 		b2.x = b1.x + b1.width + 50;
 		b2.y = b1.y;
 		b2.addEventListener(MouseEvent.CLICK,onB2Click);

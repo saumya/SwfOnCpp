@@ -5,8 +5,10 @@
 	<app main="Main" path="Export" file="SwfOnCpp" />
 	
 	<source path="Source" />
+	<source path="../../../../../6_github/StablexUI/src/" />
 	
 	<haxelib name="openfl" />
+	<haxelib name="actuate" />
 
 	
 	<!-- <haxelib name="swf" /> --> <!-- As the SWF lib is part of OpenFL now -->
