@@ -25,7 +25,7 @@ Works on OpenFL but not NME !
 
 Thats all. 
 
-The first one is necessary as the `swf` [library is now merged][1] into Openfl.          
+ - The first one is necessary as the `swf` [library is now merged][1] into Openfl.          
 
 
 
