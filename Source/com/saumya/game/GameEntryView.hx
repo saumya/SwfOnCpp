@@ -105,7 +105,7 @@ class GameEntryView extends Sprite {
 		*/
 
 		//Assets for second SWF
-		var numItems:Int = 10;
+		var numItems:Int = 4;
 		for (i in 0 ... numItems) {
 			var a = new Input1Type();
 			this.addChild(a);
@@ -126,7 +126,8 @@ class GameEntryView extends Sprite {
 		var b1:Btn_FormView = new Btn_FormView();
 		this.addChild(b1);
 		b1.x = 10;
-		b1.y = 240+50*10+20;
+		//b1.y = 240+50*10+20;
+		b1.y = 240+50*numItems+20;
 		b1.addEventListener(MouseEvent.CLICK,onB1Click);
 		//
 		var b2:Btn_ResultView = new Btn_ResultView();

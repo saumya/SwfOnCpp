@@ -14,7 +14,8 @@ Works on OpenFL but not NME !
  - SWF assets are rendering properly on Android and CPP targets
  - The `SharedObject` is working fine on Android ( This is for storing data locally )
  - Not sure why this drains the battery life !
- - Does not work on HTML5 ! It throws an error saying `Type not found : format.swf.lite.MovieClip`
+ - Does work on HTML5 ! If tt throws an error saying `Type not found : format.swf.lite.MovieClip` then please do a `clean` build and everything is fine. `haxelib run openfl test html5 -clean`
+ 
 
 #### Notes
 
