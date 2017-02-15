@@ -7,12 +7,14 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 import com.saumya.game.GameEntryView;
+import com.saumya.game.GameShell;
 
 
 
 class Main extends Sprite {
 
-	private var gameView:GameEntryView;
+	//private var gameView:GameEntryView;
+	private var gameView:GameShell;
 	
 	public function new () {
 		super ();
@@ -45,8 +47,15 @@ class Main extends Sprite {
 
 		//this.gameView.addEventListener(GameEntryView.UI_READY,onGameUiReady);
 
+		/*
 		this.gameView = new GameEntryView(this,this.stage.stageWidth,this.stage.stageHeight);
 		this.addChild(this.gameView);
+		*/
+
+		this.gameView = new GameShell(this.stage.stageWidth,this.stage.stageHeight);
+		this.addChild(this.gameView);
+		//this.gameView.preInit();
+		this.gameView.init();
 	}
 	/*
 	// Does not work ?!
