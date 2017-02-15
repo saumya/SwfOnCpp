@@ -23,6 +23,8 @@ import ru.stablex.ui.widgets.VBox;
 
 import motion.Actuate;
 
+//import com.saumya.raymp.components.ButtonWithBgColor;
+
 
 
 class GameEntryView extends Sprite {
@@ -83,6 +85,13 @@ class GameEntryView extends Sprite {
 		//StablexUI
 		this.scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
 		this.addChild( scrollView );
+
+		/*
+		var b1:ButtonWithBgColor = new ButtonWithBgColor('Save');
+		this.scrollView.addChild(b1);
+		b1.x = 200;
+		b1.y = 20;
+		*/
 
 		// Use SWF asset library
 		this.drawFromSwf();
