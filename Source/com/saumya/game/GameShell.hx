@@ -71,7 +71,7 @@ class GameShell extends Sprite {
 		bSave.addEventListener(MouseEvent.CLICK,onSaveClick);
 		bGetSaved.addEventListener(MouseEvent.CLICK,onGetSavedDataClick);
 		//
-		this.tUserData = new TextInputWithBgColor('user data');
+		this.tUserData = new TextInputWithBgColor('user data',40,400);
 		tUserData.x = 40;
 		tUserData.y = 200;
 		this.addChild(this.tUserData);
