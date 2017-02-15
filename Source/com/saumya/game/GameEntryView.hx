@@ -21,6 +21,8 @@ import ru.stablex.ui.UIBuilder;
 import ru.stablex.ui.widgets.Scroll;
 import ru.stablex.ui.widgets.VBox;
 
+import motion.Actuate;
+
 
 
 class GameEntryView extends Sprite {
@@ -158,8 +160,18 @@ class GameEntryView extends Sprite {
 		var so:SharedObject = SharedObject.getLocal("savedData");
 		trace('so.data',so.data);
 		trace('so.data.appName',so.data.appName);
+		
+		var b2 = e.currentTarget;
+
+		Actuate.tween (b2, 4, { alpha: 0.5 });
+		//Actuate.tween (b2, 2, { alpha: 0 },false);
+		//Actuate.tween (b2, 1, { alpha: 1 }).delay(1);
+		//Actuate.tween (b2, 1, { alpha: 1 }).delay(4);
+
 		this.resultField.text = so.data.appName;
 	}
+
+	
 
 	private function onB1Click(e:MouseEvent):Void{
 		trace('onB1Click');
