@@ -66,6 +66,8 @@ class GameShell extends Sprite {
 		var scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
 		this.addChild( scrollView );
 		var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
+		scrollView.x = 20;
+		scrollView.y = 100;
 		//
 		var b1:ButtonWithBgColor = new ButtonWithBgColor("Version number of the Game - 1.0.0",30,0x777777);
 		this.addChild(b1);
