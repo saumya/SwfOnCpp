@@ -26,6 +26,7 @@ import com.saumya.raymp.components.TextInputWithBgColor;
 import ru.stablex.ui.UIBuilder;
 import ru.stablex.ui.widgets.Scroll;
 import ru.stablex.ui.widgets.VBox;
+import ru.stablex.ui.widgets.Widget;
 
 
 
@@ -65,7 +66,8 @@ class GameMobileShell extends Sprite {
 		//StablexUI
 		var scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
 		this.addChild( scrollView );
-		var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
+		//var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
+		var vBox:Widget = scrollView.box;
 		scrollView.x = 4;
 		scrollView.y = 4;
 		scrollView.w = this.gWidth-10;
@@ -79,16 +81,17 @@ class GameMobileShell extends Sprite {
 		//var b1:ButtonWithBgColor = new ButtonWithBgColor("Version number of the Game - 1.0.0",30,0x777777);
 		//vBox.addChild(b1);
 		
-		var num = 20;
+		var num = 30;
 		for (i in 0 ... num) {
 			//trace(i);
 			var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-"+i,30,0x777777);
 			vBox.addChild(b1);
 			//vBox.y = i*10;
 		}
-		var nH = this.gHeight+num*18;
-		vBox.h = nH;
-		vBox.w = this.gWidth-10;
+		//var nH = this.gHeight+num*18+10;
+		//var nH = this.gHeight+num*18;
+		//vBox.h = nH;
+		//vBox.w = this.gWidth-10;
 		/*
 		var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-1",30,0x777777);
 		vBox.addChild(b1);
