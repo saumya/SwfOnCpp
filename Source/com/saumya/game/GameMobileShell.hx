@@ -37,6 +37,8 @@ class GameMobileShell extends Sprite {
 	private var gWidth:Float;
 	private var gHeight:Float;
 
+	private var screenNext:Sprite;
+
 	
 
 	public function new(gameWidth:Float,gameHeight:Float) {
@@ -55,6 +57,19 @@ class GameMobileShell extends Sprite {
 		g.beginFill(0xCCAAAA,1.0);
 		g.drawRect(0,0,this.gWidth,this.gHeight);
 		g.endFill();
+		// NEXT screen
+		this.screenNext = new Sprite();
+		var g1:Graphics = this.screenNext.graphics;
+		g1.beginFill(0xCCCCAA,1.0);
+		g1.drawRect(0,0,this.gWidth,this.gHeight);
+		g1.endFill();
+		this.screenNext.x = this.gWidth;
+		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
+		screenNext.addChild(btnBack);
+		//btnNext.x = this.gWidth - (btnNext.width+10);
+		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
+		//move to last rendering
+		//this.addChild(screenNext);
 		//
 		UIBuilder.init();
 	}
@@ -63,6 +78,15 @@ class GameMobileShell extends Sprite {
 	}
 	private function drawUI():Void{
 		//
+		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
+		this.addChild(btnNext);
+		btnNext.x = this.gWidth - (btnNext.width+10);
+		#if android
+			btnNext.y = 6;
+		#end
+
+		btnNext.addEventListener(MouseEvent.CLICK,onNextScreenClick);
+
 		//StablexUI
 		var scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
 		this.addChild( scrollView );
@@ -75,7 +99,7 @@ class GameMobileShell extends Sprite {
 		#if android
 			actionBarHeight = 100;
 		#else
-			actionBarHeight = 40;
+			actionBarHeight = 50;
 		#end
 
 		scrollView.x = 4;
@@ -111,8 +135,35 @@ class GameMobileShell extends Sprite {
 
 		//vBox.refresh();
 		scrollView.refresh();
-		
+		//NEXT screen
+		this.addChild(screenNext);
+	}
 
+	private function onNextScreenClick(e:MouseEvent):Void{
+		trace('onNextScreenClick');
+		/*
+		var screenNext:Sprite = new Sprite();
+		var g:Graphics = screenNext.graphics;
+		g.beginFill(0xCCCCAA,1.0);
+		g.drawRect(0,0,this.gWidth,this.gHeight);
+		g.endFill();
+		screenNext.x = this.gWidth;
+
+
+		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
+		screenNext.addChild(btnBack);
+		//btnNext.x = this.gWidth - (btnNext.width+10);
+		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
+		this.addChild(screenNext);
+		*/
+		//animate-in this
+		Actuate.tween (this.screenNext, 1, { x: 0 });
+
+	}
+
+	private function onBackScreenClick(e:MouseEvent):Void{
+		trace('onBackScreenClick');
+		Actuate.tween (this.screenNext, 1, { x: this.gWidth });
 	}
 
 	
