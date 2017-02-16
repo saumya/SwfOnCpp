@@ -23,6 +23,11 @@ import com.saumya.raymp.components.ButtonWithBgColor;
 import com.saumya.raymp.components.TextInputWithBgColor;
 
 
+import ru.stablex.ui.UIBuilder;
+import ru.stablex.ui.widgets.Scroll;
+import ru.stablex.ui.widgets.VBox;
+
+
 
 
 class GameShell extends Sprite {
@@ -49,11 +54,19 @@ class GameShell extends Sprite {
 		g.beginFill(0xCCAAAA,1.0);
 		g.drawRect(0,0,this.gWidth,this.gHeight);
 		g.endFill();
+		//
+		UIBuilder.init();
 	}
 	public function init():Void{
 		this.drawUI();
 	}
 	private function drawUI():Void{
+		//
+		//StablexUI
+		var scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
+		this.addChild( scrollView );
+		var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
+		//
 		var b1:ButtonWithBgColor = new ButtonWithBgColor("Version number of the Game - 1.0.0",30,0x777777);
 		this.addChild(b1);
 		b1.x = b1.y = 40;
@@ -61,12 +74,12 @@ class GameShell extends Sprite {
 		var bSave:ButtonWithBgColor = new ButtonWithBgColor("Save Data",50);
 		bSave.x = 40;
 		bSave.y = 100;
-		this.addChild(bSave);
+		vBox.addChild(bSave);
 		//
 		var bGetSaved:ButtonWithBgColor = new ButtonWithBgColor("Get Data",50);
 		bGetSaved.x = 300;
 		bGetSaved.y = 100;
-		this.addChild(bGetSaved);
+		vBox.addChild(bGetSaved);
 		//
 		bSave.addEventListener(MouseEvent.CLICK,onSaveClick);
 		bGetSaved.addEventListener(MouseEvent.CLICK,onGetSavedDataClick);
@@ -74,7 +87,7 @@ class GameShell extends Sprite {
 		this.tUserData = new TextInputWithBgColor('user data',40,400);
 		tUserData.x = 40;
 		tUserData.y = 200;
-		this.addChild(this.tUserData);
+		vBox.addChild(this.tUserData);
 
 	}
 
