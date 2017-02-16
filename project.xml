@@ -18,4 +18,7 @@
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg|*.swf" />
 	
+	<!-- Fonts -->
+	<assets path="Assets/fonts" rename="fonts" include="*.ttf" />
+	
 </project>
