@@ -8,13 +8,15 @@ import openfl.events.MouseEvent;
 
 import com.saumya.game.GameEntryView;
 import com.saumya.game.GameShell;
+import com.saumya.game.GameMobileShell;
 
 
 
 class Main extends Sprite {
 
 	//private var gameView:GameEntryView;
-	private var gameView:GameShell;
+	//private var gameView:GameShell;
+	private var gameView:GameMobileShell;
 	
 	public function new () {
 		super ();
@@ -52,7 +54,8 @@ class Main extends Sprite {
 		this.addChild(this.gameView);
 		*/
 
-		this.gameView = new GameShell(this.stage.stageWidth,this.stage.stageHeight);
+		//this.gameView = new GameShell(this.stage.stageWidth,this.stage.stageHeight);
+		this.gameView = new GameMobileShell(this.stage.stageWidth,this.stage.stageHeight);
 		this.addChild(this.gameView);
 		//this.gameView.preInit();
 		this.gameView.init();
