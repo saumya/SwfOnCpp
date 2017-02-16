@@ -68,10 +68,20 @@ class GameMobileShell extends Sprite {
 		this.addChild( scrollView );
 		//var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
 		var vBox:Widget = scrollView.box;
+
+		var actionBarHeight = 0;
+
+		// Conditional Compilation
+		#if android
+			actionBarHeight = 100;
+		#else
+			actionBarHeight = 40;
+		#end
+
 		scrollView.x = 4;
-		scrollView.y = 4;
+		scrollView.y = actionBarHeight;
 		scrollView.w = this.gWidth-10;
-		scrollView.h = this.gHeight-10;
+		scrollView.h = this.gHeight-(actionBarHeight+6);
 		//vBox.left = 20;
 		//vBox.top = 20;
 		//vBox.w = this.gWidth-10;
