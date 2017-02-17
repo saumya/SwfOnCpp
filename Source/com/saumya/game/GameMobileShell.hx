@@ -68,7 +68,8 @@ class GameMobileShell extends Sprite {
 		g1.endFill();
 		*/
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
-		this.screenNext.init();
+		//this.screenNext.init();
+		this.screenNext.initWithTopbar();
 
 		this.screenNext.x = this.gWidth;
 		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
