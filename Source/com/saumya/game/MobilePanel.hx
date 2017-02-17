@@ -152,6 +152,7 @@ class MobilePanel extends Sprite {
 			my_fmt.size = 40;
 
 			this.title.text = newTitle;
+			this.title.y = 6;
 
 			this.title.defaultTextFormat = my_fmt;
 

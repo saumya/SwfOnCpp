@@ -152,7 +152,8 @@ class GameMobileShell extends Sprite {
 		trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
 		
 		if(this.activeScreenNum==2){
-			Actuate.tween (this.screenNext, 0.6, { x: 0 }).ease (Quad.easeOut);
+			Actuate.tween (this.homeScreen, 0.6, { alpha: 0.1 }).ease (Quad.easeOut);
+			Actuate.tween (this.screenNext, 0.6, { x: 0, alpha:1.0 }).ease (Quad.easeOut);
 		}else if(this.activeScreenNum==3){
 			Actuate.tween (this.screenThree, 0.6, { x: 0 }).ease (Quad.easeOut);
 		}
@@ -167,7 +168,8 @@ class GameMobileShell extends Sprite {
 		trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
 
 		if(this.activeScreenNum==1){
-			Actuate.tween (this.screenNext, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
+			Actuate.tween (this.homeScreen, 0.6, { alpha: 1.0 }).ease (Quad.easeOut);
+			Actuate.tween (this.screenNext, 0.6, { x: this.gWidth, alpha:0.1 }).ease (Quad.easeIn);
 		}else if(this.activeScreenNum==2){
 			Actuate.tween (this.screenThree, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
 		}
