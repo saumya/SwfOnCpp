@@ -18,6 +18,7 @@ import openfl.events.MouseEvent;
 import openfl.net.SharedObject;
 
 import motion.Actuate;
+import motion.easing.Quad;
 
 import com.saumya.raymp.components.ButtonWithBgColor;
 import com.saumya.raymp.components.TextInputWithBgColor;
@@ -40,6 +41,8 @@ class GameMobileShell extends Sprite {
 	private var gHeight:Float;
 
 	private var screenNext:MobilePanel;
+	private var screenThree:MobilePanel;
+	private var activeScreenNum:Int;
 
 	
 
@@ -49,9 +52,14 @@ class GameMobileShell extends Sprite {
 		this.gWidth = gameWidth;
 		this.gHeight = gameHeight;
 		//
+		this.activeScreenNum = 1;
+		//
 		this.preInit();
 	}
 	private function preInit():Void{
+		// StablexUI
+		UIBuilder.init();
+		// drawBg
 		this.bg = new Sprite();
 		this.addChild(bg);
 		//
@@ -60,26 +68,35 @@ class GameMobileShell extends Sprite {
 		g.drawRect(0,0,this.gWidth,this.gHeight);
 		g.endFill();
 		// NEXT screen
-		/*
-		this.screenNext = new Sprite();
-		var g1:Graphics = this.screenNext.graphics;
-		g1.beginFill(0xCCCCAA,1.0);
-		g1.drawRect(0,0,this.gWidth,this.gHeight);
-		g1.endFill();
-		*/
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
+		this.screenThree = new MobilePanel(this.gWidth,this.gHeight);
 		//this.screenNext.init();
 		this.screenNext.initWithTopbar();
-
+		this.screenThree.initWithTopbar();
+		// position the screen
 		this.screenNext.x = this.gWidth;
+		this.screenThree.x = this.gWidth;
 		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
-		screenNext.addChild(btnBack);
+		//screenNext.addChild(btnBack);
+		btnBack.x = btnBack.y = 6;
+		//screenNext.addObjectToTopBar(btnBack);
 		//btnNext.x = this.gWidth - (btnNext.width+10);
-		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
+		//btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
 		//move to last rendering
 		//this.addChild(screenNext);
+
+		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
+		//this.addChild(btnNext);
+		btnNext.x = this.gWidth - (btnNext.width + 6);
+		btnNext.y = 6;
+
+		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
+		btnNext.addEventListener(MouseEvent.CLICK,onNextScreenClick);
+
+		screenNext.addObjectToTopBar(btnBack);
+		screenNext.addObjectToTopBar(btnNext);
 		//
-		UIBuilder.init();
+		//UIBuilder.init();
 	}
 	public function init():Void{
 		this.drawUI();
@@ -145,10 +162,15 @@ class GameMobileShell extends Sprite {
 		scrollView.refresh();
 		//NEXT screen
 		this.addChild(screenNext);
+		this.addChild(screenThree);
 	}
 
 	private function onNextScreenClick(e:MouseEvent):Void{
-		trace('onNextScreenClick');
+		trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
+
+		this.activeScreenNum++;
+		trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
+		
 		/*
 		var screenNext:Sprite = new Sprite();
 		var g:Graphics = screenNext.graphics;
@@ -164,14 +186,30 @@ class GameMobileShell extends Sprite {
 		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
 		this.addChild(screenNext);
 		*/
+
+		if(this.activeScreenNum==2){
+			Actuate.tween (this.screenNext, 0.6, { x: 0 }).ease (Quad.easeOut);
+		}else if(this.activeScreenNum==3){
+			Actuate.tween (this.screenThree, 0.6, { x: 0 }).ease (Quad.easeOut);
+		}
 		//animate-in this
-		Actuate.tween (this.screenNext, 1, { x: 0 });
+		//Actuate.tween (this.screenNext, 0.6, { x: 0 }).ease (Quad.easeOut);
 
 	}
 
 	private function onBackScreenClick(e:MouseEvent):Void{
-		trace('onBackScreenClick');
-		Actuate.tween (this.screenNext, 1, { x: this.gWidth });
+		trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
+		
+		this.activeScreenNum--;
+		trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
+
+		if(this.activeScreenNum==1){
+			Actuate.tween (this.screenNext, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
+		}else if(this.activeScreenNum==2){
+			Actuate.tween (this.screenThree, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
+		}
+
+		//Actuate.tween (this.screenNext, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
 	}
 
 	
