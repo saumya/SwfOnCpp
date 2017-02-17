@@ -152,8 +152,9 @@ class MobilePanel extends Sprite {
 
 	public function addObjectToTopBar(child:DisplayObject):Void{
 		//this.addChild(child); // since this is now overridden
-		super.addChild(child);
-		//this.scrollContainer.refresh();
+		//super.addChild(child);
+		
+		this.navBar.addChild(child);
 	}
 
 	// ====================== API =====================
@@ -166,7 +167,7 @@ class MobilePanel extends Sprite {
 		if(this.isHavingTopBar){
 
 			var my_fmt:TextFormat = new TextFormat(); 
-			my_fmt.color = 0x444444; 
+			my_fmt.color = 0xCCCCCC; 
 			my_fmt.size = 40;
 
 			this.title.text = newTitle;

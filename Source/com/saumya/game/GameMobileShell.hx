@@ -75,15 +75,18 @@ class GameMobileShell extends Sprite {
 		g.endFill();
 		*/
 
+		var navbarBgColor:UInt = 0x550000;
+		var navbarHeight:Float = 60;
+
 		this.homeScreen = new MobilePanel(this.gWidth,this.gHeight);
-		this.homeScreen.initWithTopbar(0xFF0000,60);
+		this.homeScreen.initWithTopbar(navbarBgColor,navbarHeight);
 
 		// NEXT screens
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
 		this.screenThree = new MobilePanel(this.gWidth,this.gHeight);
 		//this.screenNext.init();
-		this.screenNext.initWithTopbar(0x00FF00,60);
-		this.screenThree.initWithTopbar(0x00FFFF,60);
+		this.screenNext.initWithTopbar(navbarBgColor,navbarHeight);
+		this.screenThree.initWithTopbar(navbarBgColor,navbarHeight);
 		// position the screen
 		this.screenNext.x = this.gWidth;
 		this.screenThree.x = this.gWidth;
