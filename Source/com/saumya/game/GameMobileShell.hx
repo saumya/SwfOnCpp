@@ -27,6 +27,7 @@ import com.saumya.raymp.components.ButtonWithBgColor;
 import com.saumya.raymp.components.TextInputWithBgColor;
 
 import com.saumya.game.MobilePanel;
+import com.saumya.game.MobileNavBar;
 
 
 import ru.stablex.ui.UIBuilder;
@@ -75,14 +76,14 @@ class GameMobileShell extends Sprite {
 		*/
 
 		this.homeScreen = new MobilePanel(this.gWidth,this.gHeight);
-		this.homeScreen.initWithTopbar();
+		this.homeScreen.initWithTopbar(0xFF0000);
 
 		// NEXT screens
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
 		this.screenThree = new MobilePanel(this.gWidth,this.gHeight);
 		//this.screenNext.init();
-		this.screenNext.initWithTopbar();
-		this.screenThree.initWithTopbar();
+		this.screenNext.initWithTopbar(0x00FF00);
+		this.screenThree.initWithTopbar(0x00FFFF);
 		// position the screen
 		this.screenNext.x = this.gWidth;
 		this.screenThree.x = this.gWidth;
@@ -132,6 +133,9 @@ class GameMobileShell extends Sprite {
 		}
 		this.homeScreen.refreshScollContainer();
 		//
+		//var navBar:MobileNavBar = new MobileNavBar(this.gWidth,this.gHeight);
+		//navBar.init(60,0xAAAA00);
+		//this.addChild(navBar);
 	}
 
 	private function onNextScreenClick(e:MouseEvent):Void{

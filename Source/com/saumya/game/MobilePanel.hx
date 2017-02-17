@@ -22,6 +22,8 @@ import ru.stablex.ui.widgets.Widget;
 import ru.stablex.ui.widgets.Scroll;
 import ru.stablex.ui.widgets.VBox;
 
+import com.saumya.game.MobileNavBar;
+
 // usage 
 // instantiate with width x height
 // call init() or initWithTopbar() as per requirement
@@ -38,6 +40,8 @@ class MobilePanel extends Sprite {
 	private var contentPane:VBox;
 	private var scrollContainer:Scroll;
 	private var title:TextField;
+	//
+	private var navBar:MobileNavBar;
 
 	public function new(panelWidth:Float,panelHeight:Float) {
 		super();
@@ -58,7 +62,12 @@ class MobilePanel extends Sprite {
 		render();
 	}
 
-	public function initWithTopbar():Void{
+	public function initWithTopbar(topBarColor:UInt):Void{
+
+		this.navBar = new MobileNavBar(this.pWidth,this.pHeight);
+		this.navBar.init(this.topBarHeight,topBarColor);
+		//super.addChild(this.navBar);
+
 		render(true);
 	}
 
@@ -72,9 +81,15 @@ class MobilePanel extends Sprite {
 		*/
 		// Top Bar
 		if(shouldDrawTopbar==true){
+			
+			super.addChild(this.navBar);
+
+			/*
 			g1.beginFill(0x440000,1.0);
 			g1.drawRect(0,0,this.pWidth,this.topBarHeight);
 			g1.endFill();
+			*/
+
 			this.isHavingTopBar = true;
 			//
 			this.title = new TextField();
