@@ -64,19 +64,16 @@ class GameMobileShell extends Sprite {
 	private function preInit():Void{
 		// StablexUI
 		UIBuilder.init();
-		/*
-		// drawBg
-		this.bg = new Sprite();
-		this.addChild(bg);
-		//
-		var g:Graphics = this.bg.graphics;
-		g.beginFill(0xCCAAAA,1.0);
-		g.drawRect(0,0,this.gWidth,this.gHeight);
-		g.endFill();
-		*/
-
+		
 		var navbarBgColor:UInt = 0x550000;
 		var navbarHeight:Float = 60;
+
+		// Conditional compiling
+		#if android
+			navbarHeight = 100;
+		#else
+			navbarHeight = 60;
+		#end
 
 		this.homeScreen = new MobilePanel(this.gWidth,this.gHeight);
 		this.homeScreen.initWithTopbar(navbarBgColor,navbarHeight);
@@ -95,7 +92,14 @@ class GameMobileShell extends Sprite {
 		btnBack.x = btnBack.y = 6;
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
 		btnNext.x = this.gWidth - (btnNext.width + 6);
-		btnNext.y = 6;
+		//btnNext.y = 6;
+		#if android
+			btnBack.y = 26;
+			btnNext.y = 26;
+		#else
+			btnBack.y = 10;
+			btnNext.y = 10;
+		#end
 
 		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
 		btnNext.addEventListener(MouseEvent.CLICK,onNextScreenClick);
@@ -121,7 +125,7 @@ class GameMobileShell extends Sprite {
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
 		btnNext.x = this.gWidth - (btnNext.width+10);
 		#if android
-			btnNext.y = 6;
+			btnNext.y = 26;
 		#else
 			btnNext.y = 10;
 		#end

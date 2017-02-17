@@ -49,12 +49,7 @@ class MobilePanel extends Sprite {
 		this.pHeight = panelHeight;
 
 		this.isHavingTopBar = false;
-		// Conditional compiling
-		#if android
-			this.topBarHeight = 100;
-		#else
-			this.topBarHeight = 60;
-		#end
+		this.topBarHeight = 0;
 	}
 	
 	// This is called form the container, or whoever is making this panel
@@ -74,41 +69,27 @@ class MobilePanel extends Sprite {
 	}
 
 	private function render(shouldDrawTopbar:Bool=false):Void{
-		var g1:Graphics = this.graphics;
-		/*
-		//g1.clear(); // Call this if needed
-		g1.beginFill(0xCCCCAA,1.0);
-		g1.drawRect(0,0,this.pWidth,this.pHeight);
-		g1.endFill();
-		*/
+
 		// Top Bar
 		if(shouldDrawTopbar==true){
 			
 			super.addChild(this.navBar);
-
-			/*
-			g1.beginFill(0x440000,1.0);
-			g1.drawRect(0,0,this.pWidth,this.topBarHeight);
-			g1.endFill();
-			*/
 
 			this.isHavingTopBar = true;
 			//
 			this.title = new TextField();
 			this.title.autoSize = TextFieldAutoSize.CENTER;
 			this.title.text = "Title";
-
+			//
 			var my_fmt:TextFormat = new TextFormat(); 
 			my_fmt.color = 0x444444; 
 			my_fmt.size = 40;
-
+			//
 			this.title.defaultTextFormat = my_fmt;
 			this.title.x = (this.pWidth-this.title.width)/2;
 			this.title.y = 10;
-
+			//
 			super.addChild(this.title);
-
-			
 		}else{
 			// Do Nothing
 		}
