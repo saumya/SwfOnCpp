@@ -22,6 +22,8 @@ import motion.Actuate;
 import com.saumya.raymp.components.ButtonWithBgColor;
 import com.saumya.raymp.components.TextInputWithBgColor;
 
+import com.saumya.game.MobilePanel;
+
 
 import ru.stablex.ui.UIBuilder;
 import ru.stablex.ui.widgets.Scroll;
@@ -37,7 +39,7 @@ class GameMobileShell extends Sprite {
 	private var gWidth:Float;
 	private var gHeight:Float;
 
-	private var screenNext:Sprite;
+	private var screenNext:MobilePanel;
 
 	
 
@@ -58,11 +60,16 @@ class GameMobileShell extends Sprite {
 		g.drawRect(0,0,this.gWidth,this.gHeight);
 		g.endFill();
 		// NEXT screen
+		/*
 		this.screenNext = new Sprite();
 		var g1:Graphics = this.screenNext.graphics;
 		g1.beginFill(0xCCCCAA,1.0);
 		g1.drawRect(0,0,this.gWidth,this.gHeight);
 		g1.endFill();
+		*/
+		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
+		this.screenNext.init();
+
 		this.screenNext.x = this.gWidth;
 		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
 		screenNext.addChild(btnBack);
