@@ -76,14 +76,14 @@ class GameMobileShell extends Sprite {
 		*/
 
 		this.homeScreen = new MobilePanel(this.gWidth,this.gHeight);
-		this.homeScreen.initWithTopbar(0xFF0000);
+		this.homeScreen.initWithTopbar(0xFF0000,60);
 
 		// NEXT screens
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
 		this.screenThree = new MobilePanel(this.gWidth,this.gHeight);
 		//this.screenNext.init();
-		this.screenNext.initWithTopbar(0x00FF00);
-		this.screenThree.initWithTopbar(0x00FFFF);
+		this.screenNext.initWithTopbar(0x00FF00,60);
+		this.screenThree.initWithTopbar(0x00FFFF,60);
 		// position the screen
 		this.screenNext.x = this.gWidth;
 		this.screenThree.x = this.gWidth;

@@ -62,7 +62,9 @@ class MobilePanel extends Sprite {
 		render();
 	}
 
-	public function initWithTopbar(topBarColor:UInt):Void{
+	public function initWithTopbar(topBarColor:UInt,newBarHeight:Float):Void{
+
+		this.topBarHeight = newBarHeight;
 
 		this.navBar = new MobileNavBar(this.pWidth,this.pHeight);
 		this.navBar.init(this.topBarHeight,topBarColor);
