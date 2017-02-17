@@ -19,6 +19,9 @@ import openfl.net.SharedObject;
 
 import motion.Actuate;
 import motion.easing.Quad;
+import motion.easing.Bounce;
+import motion.easing.Elastic;
+import motion.easing.Linear;
 
 import com.saumya.raymp.components.ButtonWithBgColor;
 import com.saumya.raymp.components.TextInputWithBgColor;
@@ -83,17 +86,10 @@ class GameMobileShell extends Sprite {
 		// position the screen
 		this.screenNext.x = this.gWidth;
 		this.screenThree.x = this.gWidth;
+		//
 		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
-		//screenNext.addChild(btnBack);
 		btnBack.x = btnBack.y = 6;
-		//screenNext.addObjectToTopBar(btnBack);
-		//btnNext.x = this.gWidth - (btnNext.width+10);
-		//btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
-		//move to last rendering
-		//this.addChild(screenNext);
-
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
-		//this.addChild(btnNext);
 		btnNext.x = this.gWidth - (btnNext.width + 6);
 		btnNext.y = 6;
 

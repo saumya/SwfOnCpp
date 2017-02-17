@@ -64,13 +64,15 @@ class MobilePanel extends Sprite {
 
 	private function render(shouldDrawTopbar:Bool=false):Void{
 		var g1:Graphics = this.graphics;
+		/*
 		//g1.clear(); // Call this if needed
 		g1.beginFill(0xCCCCAA,1.0);
 		g1.drawRect(0,0,this.pWidth,this.pHeight);
 		g1.endFill();
+		*/
 		// Top Bar
-		if(shouldDrawTopbar){
-			g1.beginFill(0xEEEEEE,1.0);
+		if(shouldDrawTopbar==true){
+			g1.beginFill(0x440000,1.0);
 			g1.drawRect(0,0,this.pWidth,this.topBarHeight);
 			g1.endFill();
 			this.isHavingTopBar = true;
