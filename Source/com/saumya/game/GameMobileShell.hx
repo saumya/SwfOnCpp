@@ -9,6 +9,7 @@
 
 package com.saumya.game;
 
+import openfl.display.DisplayObject;
 import openfl.display.Sprite;
 import openfl.display.Graphics;
 
@@ -35,6 +36,12 @@ import ru.stablex.ui.widgets.Scroll;
 import ru.stablex.ui.widgets.VBox;
 import ru.stablex.ui.widgets.Widget;
 
+/*
+import gessie.core.Gessie;
+import gessie.impl.openfl.OpenflInputAdapter;
+import gessie.impl.openfl.OpenflDisplayListAdapter;
+import gessie.impl.openfl.OpenflTouchHitTester;
+*/
 
 
 
@@ -110,6 +117,13 @@ class GameMobileShell extends Sprite {
 		//UIBuilder.init();
 	}
 	public function init():Void{
+		/*
+		// gesture
+		Gessie.init(this.stage, new OpenflInputAdapter(this.stage, true, true));
+    	Gessie.addDisplayListAdapter(DisplayObject, new OpenflDisplayListAdapter());
+    	Gessie.addTouchHitTester(new OpenflTouchHitTester(this.stage));
+    	*/
+    	//
 		this.drawUI();
 	}
 	private function drawUI():Void{

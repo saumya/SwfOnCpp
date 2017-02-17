@@ -7,6 +7,7 @@
 	<source path="Source" />
 	<source path="../../../../../6_github/StablexUI/src/" />
 	<source path="../../3_haxelibs/raymp/src/" />
+	<!-- <source path="../../3_haxelibs/gessie-develop/src/" /> -->
 	
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
