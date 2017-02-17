@@ -13,6 +13,10 @@ import openfl.display.DisplayObject;
 import openfl.display.Sprite;
 import openfl.display.Graphics;
 
+import openfl.text.TextField;
+import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFormat;
+
 import ru.stablex.ui.UIBuilder;
 import ru.stablex.ui.widgets.Widget;
 import ru.stablex.ui.widgets.Scroll;
@@ -33,6 +37,7 @@ class MobilePanel extends Sprite {
 	//
 	private var contentPane:VBox;
 	private var scrollContainer:Scroll;
+	private var title:TextField;
 
 	public function new(panelWidth:Float,panelHeight:Float) {
 		super();
@@ -50,14 +55,14 @@ class MobilePanel extends Sprite {
 	
 	// This is called form the container, or whoever is making this panel
 	public function init():Void{
-		drawBg();
+		render();
 	}
 
 	public function initWithTopbar():Void{
-		drawBg(true);
+		render(true);
 	}
 
-	private function drawBg(shouldDrawTopbar:Bool=false):Void{
+	private function render(shouldDrawTopbar:Bool=false):Void{
 		var g1:Graphics = this.graphics;
 		//g1.clear(); // Call this if needed
 		g1.beginFill(0xCCCCAA,1.0);
@@ -65,10 +70,26 @@ class MobilePanel extends Sprite {
 		g1.endFill();
 		// Top Bar
 		if(shouldDrawTopbar){
-			g1.beginFill(0x000000,1.0);
+			g1.beginFill(0xEEEEEE,1.0);
 			g1.drawRect(0,0,this.pWidth,this.topBarHeight);
 			g1.endFill();
 			this.isHavingTopBar = true;
+			//
+			this.title = new TextField();
+			this.title.autoSize = TextFieldAutoSize.CENTER;
+			this.title.text = "Title";
+
+			var my_fmt:TextFormat = new TextFormat(); 
+			my_fmt.color = 0x444444; 
+			my_fmt.size = 40;
+
+			this.title.defaultTextFormat = my_fmt;
+			this.title.x = (this.pWidth-this.title.width)/2;
+			this.title.y = 10;
+
+			super.addChild(this.title);
+
+			
 		}else{
 			// Do Nothing
 		}
@@ -106,7 +127,7 @@ class MobilePanel extends Sprite {
 	}
 
 	public function addObjectToScrollView(child:DisplayObject):Void{
-		trace('addObjectToScrollView');
+		//trace('addObjectToScrollView');
 		this.contentPane.addChild(child);
 	}
 
@@ -116,7 +137,23 @@ class MobilePanel extends Sprite {
 		//this.scrollContainer.refresh();
 	}
 
+	// ====================== API =====================
+
 	public function refreshScollContainer():Void{
 		this.scrollContainer.refresh();
+	}
+
+	public function setTitleText(newTitle:String):Void{
+		if(this.isHavingTopBar){
+
+			var my_fmt:TextFormat = new TextFormat(); 
+			my_fmt.color = 0x444444; 
+			my_fmt.size = 40;
+
+			this.title.text = newTitle;
+
+			this.title.defaultTextFormat = my_fmt;
+
+		}
 	}
 }

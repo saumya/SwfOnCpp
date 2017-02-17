@@ -113,6 +113,10 @@ class GameMobileShell extends Sprite {
 		this.addChild(this.homeScreen);
 		this.addChild(screenNext);
 		this.addChild(screenThree);
+		//
+		this.homeScreen.setTitleText("Home");
+		this.screenNext.setTitleText("Two");
+		this.screenThree.setTitleText("Three");
 		// Making the screens
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
 		btnNext.x = this.gWidth - (btnNext.width+10);
