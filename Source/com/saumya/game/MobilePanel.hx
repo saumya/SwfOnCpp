@@ -32,6 +32,7 @@ class MobilePanel extends Sprite {
 	private var topBarHeight:Float;
 	//
 	private var contentPane:VBox;
+	private var scrollContainer:Scroll;
 
 	public function new(panelWidth:Float,panelHeight:Float) {
 		super();
@@ -76,24 +77,27 @@ class MobilePanel extends Sprite {
 	}
 	private function createScollView():Void{
 		
-		var scrollView = UIBuilder.buildFn('sui/ScrollViewMobilePanel.xml')();
-		this.addChild( scrollView );
+		//var scrollView = UIBuilder.buildFn('sui/ScrollViewMobilePanel.xml')();
+		this.scrollContainer = UIBuilder.buildFn('sui/ScrollViewMobilePanel.xml')();
+		//this.addChild( this.scrollContainer );// since this is now overridden
+		super.addChild( this.scrollContainer );
 
 		if(this.isHavingTopBar){
-			scrollView.y = this.topBarHeight+2;
-			scrollView.h = this.pHeight-(this.topBarHeight+10);
+			this.scrollContainer.y = this.topBarHeight+2;
+			this.scrollContainer.h = this.pHeight-(this.topBarHeight+10);
 		}else{
-			scrollView.y = 2;
-			scrollView.h = this.pHeight-4;
+			this.scrollContainer.y = 2;
+			this.scrollContainer.h = this.pHeight-4;
 		}
 
-		scrollView.x = 4;
+		this.scrollContainer.x = 4;
 		
-		scrollView.w = this.pWidth-10;
+		this.scrollContainer.w = this.pWidth-10;
 		
-		this.contentPane = cast(scrollView.box,VBox);
+		this.contentPane = cast(this.scrollContainer.box,VBox);
 		
-		this.addChild(scrollView);
+		//this.addChild(this.scrollContainer);// since this is now overridden
+		//super.addChild(this.scrollContainer);
 	}
 
 	override public function addChild(child:DisplayObject):DisplayObject{
@@ -102,11 +106,17 @@ class MobilePanel extends Sprite {
 	}
 
 	public function addObjectToScrollView(child:DisplayObject):Void{
+		trace('addObjectToScrollView');
 		this.contentPane.addChild(child);
 	}
 
 	public function addObjectToTopBar(child:DisplayObject):Void{
 		//this.addChild(child); // since this is now overridden
 		super.addChild(child);
+		//this.scrollContainer.refresh();
+	}
+
+	public function refreshScollContainer():Void{
+		this.scrollContainer.refresh();
 	}
 }

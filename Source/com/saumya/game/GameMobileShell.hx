@@ -40,6 +40,7 @@ class GameMobileShell extends Sprite {
 	private var gWidth:Float;
 	private var gHeight:Float;
 
+	private var homeScreen:MobilePanel;
 	private var screenNext:MobilePanel;
 	private var screenThree:MobilePanel;
 	private var activeScreenNum:Int;
@@ -59,6 +60,7 @@ class GameMobileShell extends Sprite {
 	private function preInit():Void{
 		// StablexUI
 		UIBuilder.init();
+		/*
 		// drawBg
 		this.bg = new Sprite();
 		this.addChild(bg);
@@ -67,7 +69,12 @@ class GameMobileShell extends Sprite {
 		g.beginFill(0xCCAAAA,1.0);
 		g.drawRect(0,0,this.gWidth,this.gHeight);
 		g.endFill();
-		// NEXT screen
+		*/
+
+		this.homeScreen = new MobilePanel(this.gWidth,this.gHeight);
+		this.homeScreen.initWithTopbar();
+
+		// NEXT screens
 		this.screenNext = new MobilePanel(this.gWidth,this.gHeight);
 		this.screenThree = new MobilePanel(this.gWidth,this.gHeight);
 		//this.screenNext.init();
@@ -102,6 +109,32 @@ class GameMobileShell extends Sprite {
 		this.drawUI();
 	}
 	private function drawUI():Void{
+		trace('drawUI');
+		this.addChild(this.homeScreen);
+
+		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
+		btnNext.x = this.gWidth - (btnNext.width+10);
+		#if android
+			btnNext.y = 6;
+		#else
+			btnNext.y = 10;
+		#end
+		btnNext.addEventListener(MouseEvent.CLICK,onNextScreenClick);
+		this.homeScreen.addObjectToTopBar(btnNext);
+
+		var num = 30;
+		for (i in 0 ... num) {
+			//trace(i);
+			var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-"+i,30,0x777777);
+			this.homeScreen.addObjectToScrollView(b1);
+		}
+
+		//vBox.refresh();
+		//scrollView.refresh();
+
+		this.homeScreen.refreshScollContainer();
+
+		/*
 		//
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
 		this.addChild(btnNext);
@@ -145,6 +178,7 @@ class GameMobileShell extends Sprite {
 
 		//vBox.refresh();
 		scrollView.refresh();
+		*/
 		//NEXT screen
 		this.addChild(screenNext);
 		this.addChild(screenThree);
