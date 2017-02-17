@@ -119,7 +119,6 @@ class GameMobileShell extends Sprite {
 		var vBox:Widget = scrollView.box;
 
 		var actionBarHeight = 0;
-
 		// Conditional Compilation
 		#if android
 			actionBarHeight = 100;
@@ -136,10 +135,6 @@ class GameMobileShell extends Sprite {
 		//vBox.w = this.gWidth-10;
 		//vBox.h = this.gHeight+300;
 		
-		//
-		//var b1:ButtonWithBgColor = new ButtonWithBgColor("Version number of the Game - 1.0.0",30,0x777777);
-		//vBox.addChild(b1);
-		
 		var num = 30;
 		for (i in 0 ... num) {
 			//trace(i);
@@ -147,16 +142,6 @@ class GameMobileShell extends Sprite {
 			vBox.addChild(b1);
 			//vBox.y = i*10;
 		}
-		//var nH = this.gHeight+num*18+10;
-		//var nH = this.gHeight+num*18;
-		//vBox.h = nH;
-		//vBox.w = this.gWidth-10;
-		/*
-		var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-1",30,0x777777);
-		vBox.addChild(b1);
-		var b2:ButtonWithBgColor = new ButtonWithBgColor("Button-2",30,0x777777);
-		vBox.addChild(b2);
-		*/
 
 		//vBox.refresh();
 		scrollView.refresh();
@@ -166,27 +151,11 @@ class GameMobileShell extends Sprite {
 	}
 
 	private function onNextScreenClick(e:MouseEvent):Void{
-		trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
+		//trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
 
 		this.activeScreenNum++;
 		trace('onNextScreenClick:activeScreenNum:'+activeScreenNum);
 		
-		/*
-		var screenNext:Sprite = new Sprite();
-		var g:Graphics = screenNext.graphics;
-		g.beginFill(0xCCCCAA,1.0);
-		g.drawRect(0,0,this.gWidth,this.gHeight);
-		g.endFill();
-		screenNext.x = this.gWidth;
-
-
-		var btnBack:ButtonWithBgColor = new ButtonWithBgColor("Back",30,0xCCCCCC);
-		screenNext.addChild(btnBack);
-		//btnNext.x = this.gWidth - (btnNext.width+10);
-		btnBack.addEventListener(MouseEvent.CLICK,onBackScreenClick);
-		this.addChild(screenNext);
-		*/
-
 		if(this.activeScreenNum==2){
 			Actuate.tween (this.screenNext, 0.6, { x: 0 }).ease (Quad.easeOut);
 		}else if(this.activeScreenNum==3){
@@ -194,11 +163,10 @@ class GameMobileShell extends Sprite {
 		}
 		//animate-in this
 		//Actuate.tween (this.screenNext, 0.6, { x: 0 }).ease (Quad.easeOut);
-
 	}
 
 	private function onBackScreenClick(e:MouseEvent):Void{
-		trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
+		//trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
 		
 		this.activeScreenNum--;
 		trace('onBackScreenClick:activeScreenNum:'+activeScreenNum);
@@ -208,7 +176,7 @@ class GameMobileShell extends Sprite {
 		}else if(this.activeScreenNum==2){
 			Actuate.tween (this.screenThree, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
 		}
-
+		//animate-out this
 		//Actuate.tween (this.screenNext, 0.6, { x: this.gWidth }).ease (Quad.easeIn);
 	}
 
