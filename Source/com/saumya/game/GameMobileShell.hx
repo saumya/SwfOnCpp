@@ -36,7 +36,7 @@ import ru.stablex.ui.widgets.Widget;
 
 class GameMobileShell extends Sprite {
 	
-	private var bg:Sprite;
+	//private var bg:Sprite;
 	private var gWidth:Float;
 	private var gHeight:Float;
 
@@ -109,9 +109,11 @@ class GameMobileShell extends Sprite {
 		this.drawUI();
 	}
 	private function drawUI():Void{
-		trace('drawUI');
+		//trace('drawUI');
 		this.addChild(this.homeScreen);
-
+		this.addChild(screenNext);
+		this.addChild(screenThree);
+		// Making the screens
 		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
 		btnNext.x = this.gWidth - (btnNext.width+10);
 		#if android
@@ -128,60 +130,8 @@ class GameMobileShell extends Sprite {
 			var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-"+i,30,0x777777);
 			this.homeScreen.addObjectToScrollView(b1);
 		}
-
-		//vBox.refresh();
-		//scrollView.refresh();
-
 		this.homeScreen.refreshScollContainer();
-
-		/*
 		//
-		var btnNext:ButtonWithBgColor = new ButtonWithBgColor("Next",30,0xCCCCCC);
-		this.addChild(btnNext);
-		btnNext.x = this.gWidth - (btnNext.width+10);
-		#if android
-			btnNext.y = 6;
-		#end
-
-		btnNext.addEventListener(MouseEvent.CLICK,onNextScreenClick);
-
-		//StablexUI
-		var scrollView = UIBuilder.buildFn('sui/ScrollView.xml')();
-		this.addChild( scrollView );
-		//var vBox:VBox = cast UIBuilder.getAs('idVBox', VBox);
-		var vBox:Widget = scrollView.box;
-
-		var actionBarHeight = 0;
-		// Conditional Compilation
-		#if android
-			actionBarHeight = 100;
-		#else
-			actionBarHeight = 50;
-		#end
-
-		scrollView.x = 4;
-		scrollView.y = actionBarHeight;
-		scrollView.w = this.gWidth-10;
-		scrollView.h = this.gHeight-(actionBarHeight+6);
-		//vBox.left = 20;
-		//vBox.top = 20;
-		//vBox.w = this.gWidth-10;
-		//vBox.h = this.gHeight+300;
-		
-		var num = 30;
-		for (i in 0 ... num) {
-			//trace(i);
-			var b1:ButtonWithBgColor = new ButtonWithBgColor("Button-"+i,30,0x777777);
-			vBox.addChild(b1);
-			//vBox.y = i*10;
-		}
-
-		//vBox.refresh();
-		scrollView.refresh();
-		*/
-		//NEXT screen
-		this.addChild(screenNext);
-		this.addChild(screenThree);
 	}
 
 	private function onNextScreenClick(e:MouseEvent):Void{
