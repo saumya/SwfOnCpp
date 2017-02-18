@@ -3,6 +3,9 @@
 	
 	<meta title="SwfOnCpp" package="com.sample.swfOnCpp" version="1.0.0" company="saumya Ltd." />
 	<app main="Main" path="Export" file="SwfOnCpp" />
+
+	<window width="400" height="700" if="desktop" />
+	<window width="0" height="0" if="html5" />
 	
 	<source path="Source" />
 	<source path="../../../../../6_github/StablexUI/src/" />
