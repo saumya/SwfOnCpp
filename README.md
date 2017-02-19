@@ -6,6 +6,8 @@ An experiment to run SWF assets produced from FlashIDE on CPP.
  - Android
  - MAC
 
+It uses `raymp` + `stablexUI` + `SWF assets` 
+
 Works on OpenFL but not NME !          
 
  `Most probably because of SWF library`
